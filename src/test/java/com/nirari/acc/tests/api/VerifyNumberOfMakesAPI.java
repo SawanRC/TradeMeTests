@@ -12,9 +12,8 @@ import org.testng.annotations.Test;
 
 public class VerifyNumberOfMakesAPI extends BaseTest {
 
-    @Test
+    @Test(description = "Verifies the number of used car makes available through the TradeMe API")
     public void verifyNumberOfMakesAPI() {
-
         when("Query the UsedCars endpoint of the TradeMe API");
             Response res = get("https://api.trademe.co.nz/v1/Categories/UsedCars.json?with_counts=true");
 
