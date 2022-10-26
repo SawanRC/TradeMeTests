@@ -1,47 +1,40 @@
 package com.nirari.acc.base;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.nirari.acc.TMVisitor;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public abstract class BaseTest {
 
-    private ExtentReports extentReports;
-
-    private ExtentTest test;
-
+    private final ReportManager reportManager = ReportManager.getInstance();
     protected TMVisitor visitor;
 
-    @BeforeTest
+    @BeforeMethod
     public void initializeTest() {
-        this.extentReports = new ExtentReports();
-        this.extentReports.attachReporter(new ExtentSparkReporter("target/report.html"));
-        this.test = extentReports.createTest(getClass().getName());
         this.visitor = new TMVisitor();
+        this.reportManager.createTest(getClass().getName());
     }
 
-    @AfterTest
-    public void flush() {
-        extentReports.flush();
+    @AfterMethod
+    public void flush(ITestResult result) {
+        this.reportManager.flush();
     }
 
     public void given(String message) {
-        test.info("<b>Given </b>" + message);
+        reportManager.given(message);
     }
 
     public void then(String message) {
-        test.info("<b>Then </b>" + message);
+        reportManager.then(message);
     }
 
     public void and(String message) {
-        test.info("<b>And </b>" + message);
+        reportManager.and(message);
     }
 
     public void when(String message) {
-        test.info("<b>When </b>" + message);
+        reportManager.when(message);
     }
 
 }

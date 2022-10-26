@@ -1,4 +1,4 @@
-package com.nirari.acc.make;
+package com.nirari.acc.tests.make;
 
 import com.nirari.acc.base.BaseTest;
 import com.nirari.acc.pages.TMHome;

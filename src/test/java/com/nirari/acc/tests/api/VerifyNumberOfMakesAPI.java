@@ -1,4 +1,4 @@
-package com.nirari.acc.api;
+package com.nirari.acc.tests.api;
 
 import com.nirari.acc.base.BaseTest;
 

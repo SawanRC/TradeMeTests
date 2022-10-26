@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite1">
+    <listeners>
+        <listener class-name="com.nirari.acc.base.TestListener"/>
+    </listeners>
+    <test name="test">
+        <classes>
+            <class name="com.nirari.acc.tests.api.VerifyNumberOfMakesAPI"/>
+            <class name="com.nirari.acc.tests.cars.VerifyBMWSearchResultCount"/>
+        </classes>
+    </test>
+</suite>

@@ -1,4 +1,4 @@
-package com.nirari.acc.cars;
+package com.nirari.acc.tests.cars;
 
 import com.nirari.acc.base.BaseTest;
 import com.nirari.acc.pages.TMHome;
