@@ -1,5 +1,6 @@
-package com.nirari.acc;
+package com.nirari.acc.make;
 
+import com.nirari.acc.base.BaseTest;
 import com.nirari.acc.pages.TMHome;
 import com.nirari.acc.pages.TMMotors;
 import org.testng.annotations.Test;

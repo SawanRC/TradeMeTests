@@ -1,4 +1,4 @@
-package com.nirari.acc;
+package com.nirari.acc.base;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
