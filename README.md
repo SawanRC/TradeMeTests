@@ -19,6 +19,7 @@ An automation test solution that has a combination of both UI and API tests.
 
 - TestNG
 - RestAssured
+- WebDriverManager
 - Hamcrest
 - ExtentReports
 
