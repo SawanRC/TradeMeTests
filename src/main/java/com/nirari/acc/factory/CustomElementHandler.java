@@ -1,7 +1,10 @@
 package com.nirari.acc.factory;
 
+import com.nirari.acc.elements.TMElement;
 import com.nirari.acc.elements.TMElementImpl;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WrapsDriver;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
 import java.lang.reflect.InvocationHandler;
@@ -14,7 +17,9 @@ public class CustomElementHandler implements InvocationHandler {
     private final ElementLocator locator;
     private final Class<?> concreteImplementation;
 
-    public CustomElementHandler(ElementLocator locator, Class<?> elementInterface) {
+    private final WebDriver driver;
+
+    public CustomElementHandler(ElementLocator locator, Class<?> elementInterface, WebDriver driver) {
         this.locator = locator;
 
         //Get the concrete implementation from the given interface, or fallback to TMElementImpl
@@ -22,6 +27,8 @@ public class CustomElementHandler implements InvocationHandler {
                             .ofNullable(elementInterface.getAnnotation(ConcreteImplementation.class))
                             .map(ConcreteImplementation::ImplementedBy)
                             .orElse(TMElementImpl.class);
+
+        this.driver = driver;
     }
 
     @Override
@@ -42,7 +49,13 @@ public class CustomElementHandler implements InvocationHandler {
 
     private Object getConcreteImplInstance(WebElement wrappedElement) {
         try {
-            return concreteImplementation.getConstructor(WebElement.class).newInstance(wrappedElement);
+            Object item = concreteImplementation.getConstructor(WebElement.class).newInstance(wrappedElement);
+
+            if (WrapsDriver.class.isAssignableFrom(concreteImplementation)) {
+                ((TMElement)item).setDriver(driver);
+            }
+
+            return item;
         }
         catch (Exception e) {
             throw new RuntimeException("Concrete implementation : " + concreteImplementation.getName() +

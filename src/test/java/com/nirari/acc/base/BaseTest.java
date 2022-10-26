@@ -19,6 +19,7 @@ public abstract class BaseTest {
     @AfterMethod
     public void flush(ITestResult result) {
         this.reportManager.flush();
+        this.visitor.closeDriver();
     }
 
     public void given(String message) {

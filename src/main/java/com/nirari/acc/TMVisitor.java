@@ -19,7 +19,7 @@ public class TMVisitor {
             }
 
             T p = page.getConstructor(WebDriver.class).newInstance(webDriver);
-            PageFactory.initElements(new CustomFieldDecorator(new DefaultElementLocatorFactory(webDriver)), p);
+            PageFactory.initElements(new CustomFieldDecorator(new DefaultElementLocatorFactory(webDriver), webDriver), p);
 
             for (int i = 0; i < 10; i++) {
                 if (((TMPage)p).exists()) {
@@ -34,5 +34,9 @@ public class TMVisitor {
         catch(Exception e) {
             throw new RuntimeException("An error occurred while loading page!", e);
         }
+    }
+
+    public void closeDriver() {
+        this.webDriver.close();
     }
 }

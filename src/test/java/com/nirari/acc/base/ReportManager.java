@@ -2,6 +2,7 @@ package com.nirari.acc.base;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ReportManager {
@@ -22,20 +23,24 @@ public class ReportManager {
         return instance;
     }
 
-    public void fail(String string) {
-        this.test.fail(string);
-    }
-
-    public void pass(String string) {
-        this.test.pass(string);
-    }
-
     public void flush() {
         this.extentReports.flush();
     }
 
     public void createTest(String name) {
         this.test = extentReports.createTest(name);
+    }
+
+    public void fail(String string) {
+        this.test.fail(string);
+    }
+
+    public void fail(Markup markup) {
+        this.test.fail(markup);
+    }
+
+    public void pass(String string) {
+        this.test.pass(string);
     }
 
     public void given(String message) {

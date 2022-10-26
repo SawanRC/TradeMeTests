@@ -1,6 +1,8 @@
 package com.nirari.acc.elements;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -22,6 +24,7 @@ public class TMSelectImpl extends TMElementImpl implements TMSelect {
     @Override
     public void selectItem(String item) {
         this.click();
+        ((JavascriptExecutor)getWrappedDriver()).executeScript("arguments[0].scrollIntoView();", getWrappedElement());
         this.findElement(By.xpath(".//option[normalize-space(text())='" + item + "']")).click();
     }
 

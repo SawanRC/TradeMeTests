@@ -10,8 +10,14 @@ public class TMElementImpl implements TMElement {
 
     private final WebElement element;
 
+    private WebDriver webDriver;
+
     public TMElementImpl(WebElement element) {
         this.element = element;
+    }
+
+    public final void setDriver(WebDriver driver) {
+        this.webDriver = driver;
     }
 
     @Override
@@ -112,5 +118,10 @@ public class TMElementImpl implements TMElement {
     @Override
     public Coordinates getCoordinates() {
         return ((Locatable)element.getLocation()).getCoordinates();
+    }
+
+    @Override
+    public WebDriver getWrappedDriver() {
+        return this.webDriver;
     }
 }

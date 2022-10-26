@@ -5,8 +5,10 @@
     </listeners>
     <test name="test">
         <classes>
-            <class name="com.nirari.acc.tests.api.VerifyNumberOfMakesAPI"/>
             <class name="com.nirari.acc.tests.cars.VerifyBMWSearchResultCount"/>
+            <class name="com.nirari.acc.tests.cars.VerifyFerrariSearchResultCount"/>
+            <class name="com.nirari.acc.tests.cars.VerifyHondaSearchResultCount"/>
+            <class name="com.nirari.acc.tests.cars.VerifyMazdaSearchResultCount"/>
         </classes>
     </test>
 </suite>

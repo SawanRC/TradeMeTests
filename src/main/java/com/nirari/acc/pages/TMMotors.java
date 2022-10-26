@@ -1,5 +1,6 @@
 package com.nirari.acc.pages;
 
+import com.nirari.acc.elements.TMButton;
 import com.nirari.acc.elements.TMElement;
 import com.nirari.acc.elements.TMSelect;
 import org.openqa.selenium.By;
@@ -12,7 +13,10 @@ public class TMMotors extends TMPage {
     public TMSelect makeSelect;
 
     @FindBy(xpath = "//button[@type='submit' and normalize-space(text())='Search']")
-    public TMElement searchButton;
+    public TMButton searchButton;
+
+    @FindBy(xpath = "//h3[contains(@class, 'tm-search-header-result-count__heading')]")
+    public TMElement resultCountLabel;
 
     public TMMotors(WebDriver driver) {
         super(driver);
