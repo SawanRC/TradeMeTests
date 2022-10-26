@@ -19,4 +19,14 @@ public class TMSelectImpl extends TMElementImpl implements TMSelect {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void selectItem(String item) {
+        this.click();
+        this.findElement(By.xpath(".//option[normalize-space(text())='" + item + "']")).click();
+    }
+
+    @Override
+    public boolean exists() {
+        return false;
+    }
 }

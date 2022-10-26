@@ -8,4 +8,6 @@ import java.util.List;
 public interface TMSelect extends TMElement {
 
     List<String> getAvailableItems();
+
+    void selectItem(String item);
 }
