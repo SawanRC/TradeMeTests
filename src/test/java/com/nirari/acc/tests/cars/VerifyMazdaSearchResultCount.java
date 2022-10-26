@@ -26,6 +26,6 @@ public class VerifyMazdaSearchResultCount extends BaseTest {
         and("Verify the number of results displayed");
             int resultCount = Integer.parseInt(motors.resultCountLabel.getText().split(" ")[1]
                     .replace(",", ""));
-            assertThat(resultCount, equalTo(4142)); //Could use less strict assertion, such as n > 0 or n > x
+            assertThat(resultCount, equalTo(7010)); //Could use less strict assertion, such as n > 0 or n > x
     }
 }
